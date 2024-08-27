@@ -50,9 +50,9 @@ module.exports = (sequelize, DataTypes) => {
                         exclude: ["hashedPassword"],
                     },
                 },
-            },
-            loginUser: {
-                attributes: {},
+                loginUser: {
+                    attributes: {},
+                },
             },
         }
     );
@@ -70,8 +70,8 @@ module.exports = (sequelize, DataTypes) => {
         return await User.scope("currentUser").findByPk(id);
     };
 
-    User.login = async function (credential, password) {
-        const user = User.scope("loginUser").findOne({
+    User.login = async function ({ credential, password }) {
+        const user = await User.scope("loginUser").findOne({
             where: {
                 [Op.or]: {
                     username: credential,
@@ -79,6 +79,7 @@ module.exports = (sequelize, DataTypes) => {
                 },
             },
         });
+        console.log(user);
         if (user && user.validatePassword(password)) {
             return await User.scope("currentUser").findByPk(user.id);
         }
