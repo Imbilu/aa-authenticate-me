@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post(
     "/",
-    asyncHandler(async (req, res, next) => {
+    asyncHandler(async (req, res) => {
         const { username, email, password } = req.body;
         const user = await User.signup({ username, email, password });
         if (user) {
