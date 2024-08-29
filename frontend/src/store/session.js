@@ -26,6 +26,12 @@ export const addSessionUser = (userData) => async (dispatch) => {
     dispatch(setUser(user));
 };
 
+export const getCurrentUser = () => async (dispatch) => {
+    const res = await fetch("/api/session");
+    const user = await res.json();
+    dispatch(setUser(user));
+};
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
