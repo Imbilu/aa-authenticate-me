@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import * as sessionActions from "./store/session";
 import SignupFormPage from "./components/SignupFormPage";
+import Navigation from "./components/Navigation";
 
 function App() {
     const dispatch = useDispatch();
@@ -13,14 +14,17 @@ function App() {
         dispatch(sessionActions.getCurrentUser()).then(() => setLoaded(true));
     }, [dispatch]);
     return (
-        <Switch>
-            <Route path="/login">
-                <LoginFormPage />
-            </Route>
-            <Route path="/signup">
-                <SignupFormPage />
-            </Route>
-        </Switch>
+        <>
+            <Navigation />
+            <Switch>
+                <Route path="/login">
+                    <LoginFormPage />
+                </Route>
+                <Route path="/signup">
+                    <SignupFormPage />
+                </Route>
+            </Switch>
+        </>
     );
 }
 
