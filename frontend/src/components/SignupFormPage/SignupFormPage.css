@@ -4,7 +4,7 @@
     background-color: #f0f2f5;
 }
 
-.login-form {
+.signup-form {
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -17,14 +17,14 @@
     width: 300px;
 }
 
-.login-form label {
+.signup-form label {
     padding: 5px;
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-.login-form input {
+.signup-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -32,7 +32,7 @@
     border-radius: 4px;
 }
 
-.login-form button {
+.signup-form button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -43,11 +43,6 @@
     font-size: 16px;
 }
 
-.login-form button:hover {
+.signup-form button:hover {
     background-color: #0056b3;
-}
-
-.error-list {
-    color: red;
-    margin-bottom: 15px;
 }

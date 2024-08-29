@@ -3,10 +3,10 @@ import { csrfFetch } from "./csrf";
 const SET_SESSION_USER = "session/SET_SESSION_USER";
 const REMOVE_SESSION_USER = "session/REMOVE_SESSION_USER";
 
-const setUser = (payload) => {
+const setUser = (userData) => {
     return {
         type: SET_SESSION_USER,
-        payload: payload,
+        payload: userData,
     };
 };
 
@@ -22,14 +22,27 @@ export const addSessionUser = (userData) => async (dispatch) => {
         body: JSON.stringify(userData),
     });
 
-    const user = await res.json();
-    dispatch(setUser(user));
+    const data = await res.json();
+    dispatch(setUser(data.user));
+    return res;
 };
 
 export const getCurrentUser = () => async (dispatch) => {
     const res = await fetch("/api/session");
-    const user = await res.json();
-    dispatch(setUser(user));
+    const data = await res.json();
+    dispatch(setUser(data.user));
+    return res;
+};
+
+export const addUser = (userData) => async (dispatch) => {
+    const res = await csrfFetch("api/users", {
+        method: "POST",
+        body: JSON.stringify(userData),
+    });
+
+    const data = await res.json();
+    dispatch(setUser(data.user));
+    return res;
 };
 
 const initialState = { user: null };

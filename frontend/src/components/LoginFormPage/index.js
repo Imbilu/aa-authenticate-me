@@ -26,7 +26,7 @@ function LoginFormPage() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
             <ul className="error-list">
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
@@ -41,7 +41,7 @@ function LoginFormPage() {
             />
             <label htmlFor="password">Password:</label>
             <input
-                type="text"
+                type="password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
