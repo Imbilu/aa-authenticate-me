@@ -15,15 +15,17 @@ function App() {
     }, [dispatch]);
     return (
         <>
-            <Navigation />
-            <Switch>
-                <Route path="/login">
-                    <LoginFormPage />
-                </Route>
-                <Route path="/signup">
-                    <SignupFormPage />
-                </Route>
-            </Switch>
+            <Navigation loaded={loaded} />
+            {loaded && (
+                <Switch>
+                    <Route path="/login">
+                        <LoginFormPage />
+                    </Route>
+                    <Route path="/signup">
+                        <SignupFormPage />
+                    </Route>
+                </Switch>
+            )}
         </>
     );
 }
