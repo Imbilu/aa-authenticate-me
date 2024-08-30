@@ -14,10 +14,11 @@ export function ModalProvider({ children }) {
 
     return (
         <>
+            {" "}
             <ModalContext.Provider value={value}>
-                {children}
+                {children}{" "}
             </ModalContext.Provider>
-            <div ref={modalRef}></div>
+            <div ref={modalRef}></div>{" "}
         </>
     );
 }
@@ -26,10 +27,17 @@ export function Modal({ onClose, children }) {
     const modalNode = useContext(ModalContext);
     if (!modalNode) return null;
 
+    const handleBackgroundClick = (e) => {
+        // Check if the clicked element is the background, not the modal content
+        if (e.target.id !== "modal-content") {
+            onClose();
+        }
+    };
+
     return ReactDOM.createPortal(
-        <div id="modal">
-            <div id="modal-background" onClick={onClose}></div>
-            <div id="modal-content">{children}</div>
+        <div id="modal" onClick={handleBackgroundClick}>
+            <div id="modal-background"></div>{" "}
+            <div id="modal-content">{children}</div>{" "}
         </div>,
         modalNode
     );

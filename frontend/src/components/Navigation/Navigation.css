@@ -1,33 +1,29 @@
-.nav-list {
-    list-style: none;
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-#main-nav .nav-list {
-    display: flex;
-    flex-direction: row;
-}
-
+/* Navigation Component */
 #main-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #cfcfcf;
+    background-color: #333;
     padding: 10px 20px;
 }
 
-.nav-list li {
-    display: inline;
+.nav-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
+/* Left-aligned home link */
+.nav-list li:first-child {
+    flex-grow: 1;
+}
+
+/* Home link */
 .nav-list a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    padding: 8px 16px;
+    font-size: 18px;
+    padding: 10px 15px;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
@@ -36,28 +32,48 @@
     background-color: #575757;
 }
 
-.dropdown {
-    position: absolute;
-    background-color: #ddd9d9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-}
-
-.dropdown li {
-    padding: 2px;
+/* Right-aligned profile icon */
+.nav-list li:last-child {
+    margin-left: auto;
 }
 
 #profile-btn {
-    position: relative;
-    margin-left: auto; /* Pushes the button to the right */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
 }
 
-.dropdown li:hover {
+.dropdown {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    top: 50px;
+    right: 0;
+    width: 150px;
+    z-index: 1;
+}
+
+.dropdown li {
+    padding: 8px 10px;
+    font-size: 16px;
+}
+
+.dropdown li button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
     cursor: pointer;
-    background-color: #ddd9d9;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown li button:hover {
+    background-color: #0056b3;
 }
